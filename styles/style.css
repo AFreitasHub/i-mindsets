@@ -119,24 +119,25 @@ body {
   transition: transform 1s ease-out;
 }
 
-.screen:first-child {
+.screen {
   display: flex;
   gap: 5%;
 }
 
-.screen:first-child .left {
+.screen .left {
   flex: 0 0 40%;
   height: 100%;
+  opacity: 0;
 }
 
-.screen:first-child .left img {
+.screen .left img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
 }
 
-.screen:first-child .right {
+.right {
   flex: 0 0 60%;
   line-height: 1.5;
   font-weight: 900;
@@ -144,4 +145,29 @@ body {
   text-shadow: 2px 2px 5px rgba(98, 98, 98, 0.5);
   display: flex;
   align-items: center;
+  clip-path: inset(0 100% 0 0);
+}
+
+@keyframes imgMoveLeft {
+  0% {
+    transform: translateX(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes textRevealFromImage {
+  0% {
+    transform: translateX(50%);
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    clip-path: inset(0 0% 0 0);
+    opacity: 1;
+  }
 }

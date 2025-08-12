@@ -120,5 +120,34 @@ function slide(wrapper, items, prev, next) {
     }
 
     allowShift = true;
+    runSlideAnimation(slides[index + 1]);
+  }
+
+  function runSlideAnimation(slide) {
+    if (!slide) return;
+
+    // Reset all slides (real ones, not clones)
+    Array.from(slides).forEach((s) => {
+      const imgEl = s.querySelector(".left");
+      const textEl = s.querySelector(".right");
+      imgEl.style.animation = "none";
+      textEl.style.animation = "none";
+      imgEl.style.opacity = "0";
+      imgEl.style.transform = "translateX(50%)";
+      textEl.style.opacity = "0";
+      textEl.style.transform = "translateX(50%)";
+      textEl.style.clipPath = "inset(0 100% 0 0)";
+    });
+
+    // Force reflow on the target slide to restart animation cleanly
+    const img = slide.querySelector(".left");
+    const text = slide.querySelector(".right");
+    void img.offsetWidth;
+    void text.offsetWidth;
+
+    // Apply animations to active slide
+    img.style.animation = "imgMoveLeft 1s ease forwards";
+    text.style.animation = "textRevealFromImage 1s ease forwards";
+    text.style.animationDelay = "1s";
   }
 }
