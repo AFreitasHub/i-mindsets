@@ -50,7 +50,7 @@ body {
   justify-content: center;
   transition: all 1s;
   position: relative;
-  background: #e3dfd6;
+  background: #e8e7e5;
 }
 
 .slider.loaded .slide:nth-child(2),
@@ -116,6 +116,7 @@ body {
   align-items: center;
   justify-content: center;
   text-align: left;
+  transition: transform 1s ease-out;
 }
 
 .screen:first-child {
@@ -137,10 +138,10 @@ body {
 
 .screen:first-child .right {
   flex: 0 0 60%;
-  color: #ff5c00;
   line-height: 1.5;
   font-weight: 900;
-  font-size: 24px;
+  font-size: 26px;
+  text-shadow: 2px 2px 5px rgba(98, 98, 98, 0.5);
   display: flex;
   align-items: center;
 }
